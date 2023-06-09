@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+
+void tersCevir(char* metin) {
+    int baslangic = 0;
+    int bitis = strlen(metin) - 1;
+
+    while (bitis > baslangic) {
+        char temp = metin[baslangic];
+        metin[baslangic] = metin[bitis];
+        metin[bitis] = temp;
+
+        baslangic++;
+        bitis--;
+    }
+}
+
+int main() {
+    char metin[100];
+
+    printf("Metin girin: ");
+    fgets(metin, sizeof(metin), stdin);
+
+    // fgets ile alınan metinde son karakter yeni satır (\n) olacağından, onu kaldıralım
+    metin[strcspn(metin, "\n")] = '\0';
+
+    tersCevir(metin);
+
+    printf("Metnin tersi: %s\n", metin);
+
+    return 0;
+}
