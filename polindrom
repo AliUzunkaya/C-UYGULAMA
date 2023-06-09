@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+int palindromKontrol(char* kelime) {
+    int baslangic = 0;
+    int bitis = strlen(kelime) - 1;
+
+    while (bitis > baslangic) {
+        if (kelime[baslangic] != kelime[bitis]) {
+            return 0; // Palindrom değil
+        }
+
+        baslangic++;
+        bitis--;
+    }
+
+    return 1; // Palindrom
+}
+
+int main() {
+    char kelime[100];
+
+    printf("Kelime girin: ");
+    scanf("%s", kelime);
+
+    if (palindromKontrol(kelime)) {
+        printf("Girilen kelime bir palindromdur.\n");
+    } else {
+        printf("Girilen kelime bir palindrom değildir.\n");
+    }
+
+    return 0;
+}
